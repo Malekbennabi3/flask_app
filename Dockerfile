@@ -29,8 +29,8 @@ WORKDIR /app
 # Installer les dépendances Python (si vous avez un fichier requirements.txt)
 RUN pip install --upgrade pip && pip install --ignore-installed  -r requirements.txt
 
-# Exposer le port 5000 (ou un autre port selon votre application)
-EXPOSE 5000
+# Exposer le port 8080 (ou un autre port selon votre application)
+EXPOSE 8080
 
 # Démarrer l'application (ici, un exemple avec Flask)
 CMD ["python3", "app.py"]
