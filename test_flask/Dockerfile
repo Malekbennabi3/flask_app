@@ -27,7 +27,7 @@ COPY . /app
 WORKDIR /app
 
 # Installer les dépendances Python (si vous avez un fichier requirements.txt)
-RUN pip install --upgrade pip && pip install --ignore-installed  -r requirements.txt
+RUN pip install --upgrade pip && pip install --ignore-installed  -r test_flask/requirements.txt
 
 # Exposer le port 5000 (ou un autre port selon votre application)
 EXPOSE 5000
