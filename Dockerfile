@@ -21,7 +21,7 @@ COPY . /app
 WORKDIR /app
 
 # Installer les dépendances Python
-RUN pip install --upgrade pip && pip install --ignore-installed -r requirements.txt
+RUN pip install --upgrade pip && pip install --no-cache-dir --ignore-installed -r requirements.txt
 
 # Exposer le port (ajustez selon votre app)
 EXPOSE 5000
