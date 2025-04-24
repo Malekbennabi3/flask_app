@@ -42,7 +42,11 @@ rich==14.0.0
 six==1.17.0
 tensorboard==2.19.0
 tensorboard-data-server==0.7.2
-tensorflow==2.19.0
+# ↓ remplacer TensorFlow par sa version CPU ou TFLite
+# tensorflow==2.19.0
+tensorflow-cpu==2.19.0
+# OU pour un modèle converti en .tflite
+# tflite-runtime==2.9.1
 tensorflow-io-gcs-filesystem==0.37.1
 termcolor==3.0.1
 typing_extensions==4.13.2
