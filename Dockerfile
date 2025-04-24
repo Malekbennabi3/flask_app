@@ -1,7 +1,5 @@
-# Utilisation de l'image de base NVIDIA CUDA avec Ubuntu 22.04 et CUDA 12.8
-FROM nvidia/cuda:12.8.0-runtime-ubuntu22.04
+FROM tensorflow/tensorflow:2.18.0
 
-FROM tensorflow/tensorflow:2.18.0-gpu
 
 
 # Configuration pour éviter les prompts interactifs
