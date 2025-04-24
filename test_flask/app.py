@@ -1,11 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
 import os
 from werkzeug.utils import secure_filename
-from main import process_image
 import numpy as np
 from flask import Flask, render_template, request, redirect, url_for
-from test import make_gradcam_heatmap
 from test import display_gradcam_filtered
+from test import make_gradcam_heatmap
 
 from tensorflow.keras.applications.vgg16 import VGG16
 import cv2
@@ -56,4 +55,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host="0.0.0.0", port=5000)
