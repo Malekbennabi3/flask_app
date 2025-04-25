@@ -50,12 +50,12 @@ def index():
 # Route pour classification.html
 @app.route('/classification')
 def classification():
-    return render_template('classification.html')
+    return render_template('Classification.html')
 
 # Route pour segmentation.html
 @app.route('/segmentation')
 def segmentation():
-    return render_template('segmentation.html')
+    return render_template('Segmentation.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8080)
