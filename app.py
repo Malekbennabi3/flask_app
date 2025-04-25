@@ -51,7 +51,7 @@ def index():
                                    filtered_image=url_for('static', filename='img/gradcam_filtre.png'),
                                    threshold_percentage=threshold_percentage)
 
-    return render_template('index.html', original_image=None, output_image=None, filtered_image=None)
+    return render_template('templates/index.html', original_image=None, output_image=None, filtered_image=None)
 
 
 if __name__ == '__main__':
