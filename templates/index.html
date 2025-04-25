@@ -49,8 +49,8 @@
 
   <!-- Deux gros boutons -->
   <div class="buttons">
-    <button class="big-button" onclick="location.href='templates/Classification.html'">Classification</button>
-    <button class="big-button" onclick="location.href='Segmentation.html'">Segmentation</button>
+    <button class="big-button" onclick="location.href='{{ url_for('classification') }}'">Classification</button>
+    <button class="big-button" onclick="location.href='{{ url_for('segmentation') }}'">Segmentation</button>
   </div>
 
 </body>
