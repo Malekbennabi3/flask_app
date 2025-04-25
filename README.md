@@ -1,2 +1,2 @@
 # flask_app
-une simple application flask pour déploiement
+Une simple application Flask pour déploiement Docker avec Google Cloud Service
