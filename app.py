@@ -5,6 +5,7 @@ import cv2
 
 from werkzeug.utils import secure_filename
 from test import display_gradcam_filtered, make_gradcam_heatmap
+# noinspection PyUnresolvedReferences
 from tensorflow.keras.applications.vgg16 import VGG16
 
 app = Flask(__name__)
@@ -47,14 +48,28 @@ def index():
 
     return render_template('index.html', original_image=None, output_image=None, filtered_image=None)
 
-# Route pour classification.html
-@app.route('/classification')
+# 🔥 Route pour classification.html CORRIGÉE pour accepter POST
+@app.route('/classification', methods=['GET', 'POST'])
 def classification():
+    if request.method == 'POST':
+        file = request.files['image']
+        if file:
+            filename = secure_filename(file.filename)
+            img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(img_path)
+            # Tu peux mettre ici ton traitement spécifique à classification
     return render_template('Classification.html')
 
-# Route pour segmentation.html
-@app.route('/segmentation')
+# 🔥 Route pour segmentation.html CORRIGÉE pour accepter POST
+@app.route('/segmentation', methods=['GET', 'POST'])
 def segmentation():
+    if request.method == 'POST':
+        file = request.files['image']
+        if file:
+            filename = secure_filename(file.filename)
+            img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(img_path)
+            # Tu peux mettre ici ton traitement spécifique à segmentation
     return render_template('Segmentation.html')
 
 if __name__ == '__main__':

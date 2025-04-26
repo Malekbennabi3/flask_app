@@ -45,7 +45,7 @@ six==1.17.0
 tensorboard==2.19.0
 tensorboard-data-server==0.7.2
 tensorflow==2.19.0
-tensorflow-io-gcs-filesystem==0.37.1
+tensorflow-io-gcs-filesystem==0.30.0
 tensorrt-cu12==10.9.0.34
 tensorrt_cu12_bindings==10.9.0.34
 tensorrt_cu12_libs==10.9.0.34
