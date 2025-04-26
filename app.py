@@ -48,7 +48,6 @@ def index():
 
     return render_template('index.html', original_image=None, output_image=None, filtered_image=None)
 
-# 🔥 Route pour classification.html CORRIGÉE pour accepter POST
 @app.route('/classification', methods=['GET', 'POST'])
 def classification():
     if request.method == 'POST':
