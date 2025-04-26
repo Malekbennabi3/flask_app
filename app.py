@@ -57,8 +57,29 @@ def classification():
             filename = secure_filename(file.filename)
             img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(img_path)
-            # Tu peux mettre ici ton traitement spécifique à classification
-    return render_template('Classification.html')
+
+            # Traitement (par exemple faire Grad-CAM aussi ici)
+            heatmap, original = make_gradcam_heatmap(img_path, model, last_conv_layer_name='block5_conv3')
+            heatmap_resized = cv2.resize(heatmap, (original.shape[1], original.shape[0]))
+            heatmap_uint8 = np.uint8(255 * heatmap_resized)
+            heatmap_colored = cv2.applyColorMap(heatmap_uint8, cv2.COLORMAP_JET)
+            superimposed = cv2.addWeighted(original, 0.6, heatmap_colored, 0.4, 0)
+
+            original_path = os.path.join(app.config['UPLOAD_FOLDER'], f'original_{filename}')
+            gradcam_path = os.path.join(app.config['UPLOAD_FOLDER'], f'gradcam_{filename}')
+            cv2.imwrite(original_path, original[..., ::-1])
+            cv2.imwrite(gradcam_path, superimposed)
+
+            display_gradcam_filtered(img_path, model, last_conv_layer_name='block5_conv3', threshold=0.6)
+            threshold_percentage = int(0.6 * 100)
+
+            return render_template('Classification.html',
+                                   original_image=url_for('static', filename=f'outputs/original_{filename}'),
+                                   output_image=url_for('static', filename=f'outputs/gradcam_{filename}'),
+                                   filtered_image=url_for('static', filename='img/gradcam_filtre.png'),
+                                   threshold_percentage=threshold_percentage)
+
+    return render_template('Classification.html', original_image=None, output_image=None, filtered_image=None)
 
 # 🔥 Route pour segmentation.html CORRIGÉE pour accepter POST
 @app.route('/segmentation', methods=['GET', 'POST'])
